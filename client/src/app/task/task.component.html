@@ -1,0 +1,8 @@
+<button (click) = "getTasks()">Get Task Entries</button>
+<div *ngFor = "let oneTask of task">
+
+  <h1> {{oneTask.title}} </h1>
+
+  <a [routerLink]="[ oneTask._id, 'details']">See Details</a>
+  <hr>
+</div>
