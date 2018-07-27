@@ -20,12 +20,17 @@ newTaskEntry:any = {
   }
 
   getOneTask(entryId){
-    return this.http.get(`http://localhost:3000/api/tasks/` + entryId + '/details' )
+    return this.http.get('http://localhost:3000/api/tasks/' + entryId + '/details' )
       .map((res) => res.json());
   }
 
   createTask(newTaskEntry) {
-    return this.http.post(`http://localhost:3000/api/tasks/create`, newTaskEntry )
+    return this.http.post('http://localhost:3000/api/tasks/create', newTaskEntry )
       .map((res) => res.json());
+  }
+
+  deleteTask(deletedTask) {
+    return this.http.post('http://localhost:3000/api/tasks/' + deletedTask + '/delete', {} )
+    .map((res)=> res.json)
   }
 }

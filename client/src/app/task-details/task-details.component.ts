@@ -19,10 +19,15 @@ export class TaskDetailsComponent implements OnInit {
     .subscribe((params) => {
       this.myService.getOneTask(params['id'])
       .subscribe((theEntryFromService)=>{
-        console.log(theEntryFromService)
         this.theActualEntry = theEntryFromService
-        console.log(this.theActualEntry)
       })
     })
     }
-  }
+    deleteTask(){
+    this.theRouter.params
+    .subscribe((params) => {
+      this.myService.deleteTask(params['id'])
+      .subscribe((theEntryToDelete)=>{
+      })
+    })
+  }}

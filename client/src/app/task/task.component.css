@@ -2,4 +2,11 @@ button {
     height: 2rem;
     background-color: black;
     color: white;
+    position: absolute;
+    width: 8rem;
+    height: 3rem;
+    margin-top: -3rem;
+    border-radius: 10px;
+    margin-left: 10rem;
+    font-size: 12px;
 }
