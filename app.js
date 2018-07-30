@@ -9,7 +9,11 @@ const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
 const cors         = require('cors')
+const passport     = require ('passport');
+const session    = require('express-session');
 
+const passportSetup = require('./config/passport');
+passportSetup(passport);
 
 mongoose.Promise = Promise;
 mongoose
@@ -45,6 +49,15 @@ app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.use(cors())
+app.use(session({
+  secret: 'angular auth passport secret shh',
+  resave: true,
+  saveUninitialized: true,
+  cookie : { httpOnly: true, maxAge: 2419200000 }
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 // default value for title local
@@ -57,6 +70,9 @@ app.use('/', index);
 
 const taskRoutes = require('./routes/toDoTasks');
 app.use('/api', taskRoutes);
+
+const userRoutes = require('./routes/authRoutes');
+app.use('/api', userRoutes);
 
 
 module.exports = app;

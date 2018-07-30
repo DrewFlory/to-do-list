@@ -20,5 +20,4 @@ export class TaskComponent implements OnInit {
     this.tasks.getTasks()
     .subscribe((task)=> this.task = task);
    }
-
 }

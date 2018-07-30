@@ -1,4 +1,12 @@
 <h3>{{theActualEntry.title}}</h3>
 <p>{{theActualEntry.description}}</p>
 <p>{{theActualEntry.doneyet}}</p>
-<button (click)="deleteTask()">Delete</button>
+
+<div >
+<button (click)="deleteTask()" class="button1">Delete</button>
+</div>
+<br>
+<div>
+<a [routerLink]="[ oneTask._id, 'details']">Edit</a>
+<!-- <button (click)="editTask()" class="button2">Edit</button> -->
+</div>
